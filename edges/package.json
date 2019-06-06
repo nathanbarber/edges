@@ -1,10 +1,10 @@
 {
   "name": "edges",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "An asynchronous, multipurpose, data transforming pipeline tool",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha tests/*.test.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/nathanbarber/edges/issues"
   },
-  "homepage": "https://github.com/nathanbarber/edges#readme"
+  "homepage": "https://github.com/nathanbarber/edges#readme",
+  "devDependencies": {
+    "assert": "^2.0.0",
+    "mocha": "^6.1.4"
+  }
 }
