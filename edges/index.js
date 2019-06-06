@@ -4,6 +4,20 @@ class Edges {
         this.tasks = {};
     }
 
+    static shape(object) {
+        var shaped = JSON.parse(JSON.stringify(object));
+        for(let prop in object) {
+            if(typeof object[prop] != "object") {
+                shaped[prop] = typeof object[prop];
+            } else if(Array.isArray(object[prop])) {
+                shaped[prop] = typeof object[prop];
+            } else {
+                shaped[prop] = Edges.shape(object[prop])
+            }
+        }
+        return shaped;
+    }
+
     task(name = "", func = function(object) {}) {
         if(typeof func != "function") throw new Error("TASKERR! Please feed the task method a function to be executed");
         if(typeof name != "string") throw new Error("TASKERR! Please feed the task method a proper name to input by");
