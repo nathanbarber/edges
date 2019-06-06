@@ -1,4 +1,4 @@
-# A Rounded Data "Pipeline"
+# Async Data "Pipeline"
 
 Edges takes a user-specified data chunk and performs asynchronous tasks on it, returning the end result.
 The point of this project is to create a data pipeline framework that can take full advantage of the async nature of Node.js.
