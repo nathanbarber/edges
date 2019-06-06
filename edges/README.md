@@ -1,4 +1,4 @@
-# A Rounded Data "Pipeline"
+# For Quick Async Data Operations
 
 Edges takes a user-specified data chunk and performs asynchronous tasks on it, returning the end result.
 The point of this project is to create a data pipeline framework that can take full advantage of the async nature of Node.js.
@@ -39,7 +39,7 @@ Edge.task("populate data for something", async inputData => {
 
 
 ## Running your tasks
-When running tasks, be sure to have your first argument as an array of task names (`['task1', 'task2', ...]`), and your second argument as the data to be modified through the async pipeline.   
+When running tasks, be sure to have your first argument as an array of task names (`['task1', 'task2', ...]`), and your second argument as the data to be modified through the async process.   
 The object that's fed in to `Edge.runs()` will be checked for likeness to the 'shape' object defined in the Edge constructor.   
 `Edge.runs()` will return a Promise containing the modified data.
 ```javascript
