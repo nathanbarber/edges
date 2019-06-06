@@ -1,4 +1,0 @@
-DONE - Block task functions from deviating values from schema / creating new values
-Flag overlaps in task changes
-Allow arrays to be a part of the schema and not just seen as object values
-Add a synchronous option to the Edges class
