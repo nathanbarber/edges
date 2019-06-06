@@ -1,3 +1,4 @@
-node_modules
+Makefile
+tests/
 TODO
 package-lock.json

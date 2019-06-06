@@ -1,6 +1,6 @@
 {
   "name": "edges",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "An asynchronous, multipurpose, data transforming pipeline tool",
   "main": "index.js",
   "scripts": {
