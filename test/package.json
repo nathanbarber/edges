@@ -9,6 +9,6 @@
   "author": "Nathan Barber",
   "license": "ISC",
   "dependencies": {
-    "edges": "^1.0.2"
+    "edges": "^1.0.5"
   }
 }

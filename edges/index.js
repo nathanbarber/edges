@@ -1,10 +1,10 @@
 class Edges {
-    constructor(shape) {
+    constructor(shape = {}) {
         this.schema = shape;
         this.tasks = {};
     }
 
-    task(name, func) {
+    task(name = "", func = function(object) {}) {
         if(typeof func != "function") throw new Error("TASKERR! Please feed the task method a function to be executed");
         if(typeof name != "string") throw new Error("TASKERR! Please feed the task method a proper name to input by");
         if(func.constructor.name != "AsyncFunction" && func() instanceof Promise == false) throw new Error("TASKERR! Please feed the task method an asynchronous function");
@@ -19,7 +19,7 @@ class Edges {
         return tasks.join(", ");
     }
 
-    isShape(data, schema) {
+    isShape(data = this.schema, schema = undefined) {
         if(!schema) schema = this.schema;
         for(let node in schema) {
             if(typeof schema[node] != "object") {
@@ -31,7 +31,7 @@ class Edges {
         return true;
     }
 
-    sorts(datas) {
+    sorts(datas = [{}]) {
         datas.sort((a, b) => {
             a = a.finished;
             b = b.finished;
@@ -39,7 +39,7 @@ class Edges {
         });
     }
 
-    async runs(tasks, data, options = {
+    async runs(tasks = [""], data = this.schema, options = {
         overlap: true
     }) {
         if(Array.isArray(tasks) == false) throw new Error("RUNERR! Please feed the run method an array of existing tasks");
@@ -48,10 +48,11 @@ class Edges {
             let altered = [];
             for(let task of tasks) {
                 this.tasks[task](data).then(res => {
+                    this.isShape(res);
                     altered.push({
                         "task": task,
                         "finished": Date.now(),
-                        "data": d
+                        "data": res
                     });
                     if(altered.length >= tasks.length) resolve(altered);
                 })
@@ -78,16 +79,16 @@ class Edges {
         }
 
         function concat(datas) {
-            var concat = datas[0];
+            var concat = datas[0].data;
             for(let stage in datas) {
-                concat = update(datas[stage], concat);
+                concat = update(datas[stage].data, concat);
             }
             return concat;
         }
 
-        this.sorts(datas)
+        this.sorts(datas);
         return concat(datas);
     }
 }
 
-exports.Edges = Edges;
+module.exports = Edges;
